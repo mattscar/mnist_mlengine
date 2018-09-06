@@ -12,6 +12,8 @@ gcloud ml-engine jobs submit training cloud_mnist --module-name trainer.task --p
 
 This tells the engine that the application code is provided in a package named `trainer`, and the name of the module is `task`. The package is located in the GCS bucket given by `JOB_DIR` and the image data is stored in the GCS bucket named `DATA_DIR`.
 
+## The Package Directory
+
 For the engine to recognize the package, the package directory must meet three requirements:
 - The directory must contain the module identified by `--module-name`
 - The parent directory must have a file named setup.py
@@ -21,6 +23,8 @@ The engine will install the package if setup.py performs two operations:
 - Import `setuptools.setup`
 - Call the `setup` function of the `setuptools` module
   
+## Calling the setup Function
+
 The setup function accepts a great deal of information about the package, including its name, version, and dependencies. The following code shows how it can be called:
 
 ```
